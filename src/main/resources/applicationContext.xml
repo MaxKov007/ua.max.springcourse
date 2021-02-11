@@ -7,9 +7,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ua.max.springcourse.TestBean">
-        <constructor-arg value="Neil"/>
+    <bean id="musicBean"
+          class="ua.max.springcourse.JazzMusic">
+        <!--        не абстрактное (not Interface), а что-то конкретное (Class), из чего можно создать обьект-->
     </bean>
 
 </beans>
