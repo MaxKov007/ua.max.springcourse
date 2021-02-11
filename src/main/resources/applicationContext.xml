@@ -8,8 +8,14 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="musicBean"
-          class="ua.max.springcourse.JazzMusic">
+          class="ua.max.springcourse.ClassicalMusic">
         <!--        не абстрактное (not Interface), а что-то конкретное (Class), из чего можно создать обьект-->
     </bean>
+    <bean id="musicPlayer"
+          class="ua.max.springcourse.MusicPlayer">
+          <constructor-arg ref="musicBean"/>
+<!--        ref - reference (ссылка на обьект)
+            При создании бина(обьекта) musicPlayer будет внедрена зависимасть с бином (обьектом) musicBean-->
+          </bean>
 
 </beans>
