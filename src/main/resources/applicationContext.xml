@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
@@ -13,9 +13,7 @@
     </bean>
     <bean id="musicPlayer"
           class="ua.max.springcourse.MusicPlayer">
-          <constructor-arg ref="musicBean"/>
-<!--        ref - reference (ссылка на обьект)
-            При создании бина(обьекта) musicPlayer будет внедрена зависимасть с бином (обьектом) musicBean-->
-          </bean>
+        <property name="music" ref="musicBean"/>
+    </bean>
 
 </beans>
