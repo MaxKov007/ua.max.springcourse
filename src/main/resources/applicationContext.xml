@@ -7,6 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+<!--        Импортируем файл musicPlayer.properties с помощью тега <context:property-placeholder
+            переменная classpath: ссылается на файлы, которые находяться в папке resources-->
+
     <bean id="musicBean"
           class="ua.max.springcourse.ClassicalMusic">
         <!--        не абстрактное (not Interface), а что-то конкретное (Class), из чего можно создать обьект-->
@@ -15,8 +19,8 @@
           class="ua.max.springcourse.MusicPlayer">
         <property name="music" ref="musicBean"/>
 
-        <property name="name" value="Some name"/>
-        <property name="volume" value="50"/>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
