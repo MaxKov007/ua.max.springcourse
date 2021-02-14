@@ -11,13 +11,28 @@
 <!--        Импортируем файл musicPlayer.properties с помощью тега <context:property-placeholder
             переменная classpath: ссылается на файлы, которые находяться в папке resources-->
 
-    <bean id="musicBean"
+    <bean id="musicBean1"
           class="ua.max.springcourse.ClassicalMusic">
         <!--        не абстрактное (not Interface), а что-то конкретное (Class), из чего можно создать обьект-->
     </bean>
+
+    <bean id="musicBean2"
+          class="ua.max.springcourse.RockMusic">
+    </bean>
+
+    <bean id="musicBean3"
+          class="ua.max.springcourse.JazzMusic">
+    </bean>
+
     <bean id="musicPlayer"
           class="ua.max.springcourse.MusicPlayer">
-        <property name="music" ref="musicBean"/>
+        <property name="musicList">
+            <list>
+                <ref bean="musicBean1"/>
+                <ref bean="musicBean2"/>
+                <ref bean="musicBean3"/>
+            </list>
+        </property>
 
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
