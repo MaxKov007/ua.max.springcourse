@@ -29,7 +29,8 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="ua.max.springcourse.MusicPlayer">
+          class="ua.max.springcourse.MusicPlayer"
+          scope="prototype">
         <property name="musicList" ref="musicBean"/>
 
         <property name="name" value="${musicPlayer.name}"/>
