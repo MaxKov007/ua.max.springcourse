@@ -26,19 +26,32 @@
     Очищение ресурсов, закрытие потоков ввода-ввывода, закрытие доступа к БД
 
     Эти два метода создаются в классе бина. Spring будет вызывать эти методы в нужный момент времени
+
+    Тонкости init и destroy методов:
+    Модифкаторы доступа: может быть любой - public, protected, private
+    Тип возращаемого значения: может быть любой, но чаще используется void
+    (нет возможности получить возращаемое значение - так как Spring вызывает ети значения, а не мы)
+    Название метода: может быть любым
+    Аргументы метода: эти методы не должны принимать на вход какие либо аргументы
+
+    Для бинов со scope "prototype" Spring не вызывает destroy метод
+    Spring не берет на себя полный жизненный цикл бинов со scope "prototype".
+    Spring отдает prototype бины клиенту и больше о них не заботится (в отличии от singleton бинов)
     -->
 
     <bean id="musicBean"
-          class="ua.max.springcourse.ClassicalMusic">
+          class="ua.max.springcourse.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
 
-    <bean id="musicPlayer"
-          class="ua.max.springcourse.MusicPlayer"
-          scope="prototype">
-        <property name="musicList" ref="musicBean"/>
+<!--    <bean id="musicPlayer"-->
+<!--          class="ua.max.springcourse.MusicPlayer"-->
+<!--          scope="prototype">-->
+<!--        <property name="musicList" ref="musicBean"/>-->
 
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+<!--        <property name="name" value="${musicPlayer.name}"/>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+<!--    </bean>-->
 
 </beans>
