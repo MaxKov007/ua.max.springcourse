@@ -37,10 +37,14 @@
     Для бинов со scope "prototype" Spring не вызывает destroy метод
     Spring не берет на себя полный жизненный цикл бинов со scope "prototype".
     Spring отдает prototype бины клиенту и больше о них не заботится (в отличии от singleton бинов)
+
+    Для бинов со scope "prototype" Spring вызовит столько init методов, сколько "prototype" бинов мы получаем
+    В случае с singleton бином - Spring вызовит только один раз init метод и не важно сколько раз мы вызовим метод getBean
     -->
 
     <bean id="musicBean"
           class="ua.max.springcourse.ClassicalMusic"
+          scope="prototype"
           init-method="doMyInit"
           destroy-method="doMyDestroy">
     </bean>
