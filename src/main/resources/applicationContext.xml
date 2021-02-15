@@ -11,28 +11,26 @@
 <!--        Импортируем файл musicPlayer.properties с помощью тега <context:property-placeholder
             переменная classpath: ссылается на файлы, которые находяться в папке resources-->
 
-    <bean id="musicBean1"
+<!--    Scope задает то, как Spring будет создавать бины
+
+        Scope Singleton используется по умолчанию (когда мы ничего не указываем):
+        * по умолчанию создается один обьект (он создается до вызова метода getBean())
+        * при всех вызовах getBean() возвращается ссылка на один и тот же единственный обьект)
+        Scope Singleton используеься, когда у нашего бина нет изменяемых состояний (stateless)
+
+        Scope Prototype - каждый раз создает новый обьект при вызове метода getBean()
+        Scope Prototype используется, когда у нашего бина есть изменяемые состояния (stateful)
+
+        Есть и другие Scope: Request, session, global-session-->
+
+    <bean id="musicBean"
           class="ua.max.springcourse.ClassicalMusic">
         <!--        не абстрактное (not Interface), а что-то конкретное (Class), из чего можно создать обьект-->
     </bean>
 
-    <bean id="musicBean2"
-          class="ua.max.springcourse.RockMusic">
-    </bean>
-
-    <bean id="musicBean3"
-          class="ua.max.springcourse.JazzMusic">
-    </bean>
-
     <bean id="musicPlayer"
           class="ua.max.springcourse.MusicPlayer">
-        <property name="musicList">
-            <list>
-                <ref bean="musicBean1"/>
-                <ref bean="musicBean2"/>
-                <ref bean="musicBean3"/>
-            </list>
-        </property>
+        <property name="musicList" ref="musicBean"/>
 
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
