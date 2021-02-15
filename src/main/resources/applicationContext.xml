@@ -8,24 +8,28 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-<!--        Импортируем файл musicPlayer.properties с помощью тега <context:property-placeholder
-            переменная classpath: ссылается на файлы, которые находяться в папке resources-->
 
-<!--    Scope задает то, как Spring будет создавать бины
+    <!--    Жизненный цикл бина (Bean Lifecycle):
+    1. Вы запускаете Spring приложение
+    2. Запускается Spring контейнер
+    3. Создается обьект бина
+    4. В бин внедряются зависимости (Dependency Injection)
+    5. Вызывается указанный init-method
+    6. Бин готов к использованию (использование бина)
+    7. Вызывается указанный destroy-method
+    8. Остановка Spring приложения
 
-        Scope Singleton используется по умолчанию (когда мы ничего не указываем):
-        * по умолчанию создается один обьект (он создается до вызова метода getBean())
-        * при всех вызовах getBean() возвращается ссылка на один и тот же единственный обьект)
-        Scope Singleton используеься, когда у нашего бина нет изменяемых состояний (stateless)
+    Init-method - метод, который запускается в ходе инициализации бина.
+    Иициализация ресурсов, обращение к внешним файлам, запуск БД
 
-        Scope Prototype - каждый раз создает новый обьект при вызове метода getBean()
-        Scope Prototype используется, когда у нашего бина есть изменяемые состояния (stateful)
+    Destroy-method - метод, который запускается в ходе уничтожения бина (при завершении приложения).
+    Очищение ресурсов, закрытие потоков ввода-ввывода, закрытие доступа к БД
 
-        Есть и другие Scope: Request, session, global-session-->
+    Эти два метода создаются в классе бина. Spring будет вызывать эти методы в нужный момент времени
+    -->
 
     <bean id="musicBean"
           class="ua.max.springcourse.ClassicalMusic">
-        <!--        не абстрактное (not Interface), а что-то конкретное (Class), из чего можно создать обьект-->
     </bean>
 
     <bean id="musicPlayer"
