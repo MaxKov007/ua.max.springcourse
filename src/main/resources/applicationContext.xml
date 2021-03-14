@@ -7,37 +7,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <!--    Factory-method
-    Фабричный метод - это патерн программирования
-    Патерн "фабричный метод" предлагает создвать обьекты не на прямую, используя оператор new,
-    а через вызов особого фабричного метода.
-    Обьекты всё равно будут создаваться при помощи new, но делать это будет фабричный метод (иногда это полезно)
-    https://refactoring.guru/ru/design-patterns/factory-method
-
-    Тонкость:
-    Если scope="singleton" и мы несколько раз вызовем context.getBean бина ClassicalMusic -
-    у нас будет создан и использоваться один обьект ClassicalMusic
-    Тоисть, Spring вызовит один раз фабричный метод getClassicalMusic()
-    и этот обьект, который фабричный метод вернул, Spring у себя сохранит
-    и каждый раз будет давать ссылку на этот единственный обьект
-    -->
-
-    <bean id="musicBean"
-          class="ua.max.springcourse.ClassicalMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getClassicalMusic">
-    </bean>
-
-<!--    <bean id="musicPlayer"-->
-<!--          class="ua.max.springcourse.MusicPlayer"-->
-<!--          scope="prototype">-->
-<!--        <property name="musicList" ref="musicBean"/>-->
-
-<!--        <property name="name" value="${musicPlayer.name}"/>-->
-<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
-<!--    </bean>-->
+    <context:component-scan base-package="ua.max.springcourse"/>
+    
 
 </beans>
