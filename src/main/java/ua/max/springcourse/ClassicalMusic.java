@@ -18,11 +18,7 @@ public class ClassicalMusic implements Music {
     }
 
     @Override
-    public List<String> getSong() {
-        List<String> classicalList = new ArrayList<>();
-        classicalList.add("Hungarian Rhapsody");
-        classicalList.add("Classical song 2");
-        classicalList.add("Classical song 3");
-        return classicalList;
+    public String getSong() {
+        return "Classical song";
     }
 }

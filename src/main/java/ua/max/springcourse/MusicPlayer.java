@@ -2,6 +2,8 @@ package ua.max.springcourse;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MusicPlayer {
@@ -19,15 +21,17 @@ public class MusicPlayer {
         return volume;
     }
 
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
+    private List<Music> musicList;
 
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
+
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
     public String playMusic() {
-        return "Playing " + classicalMusic.getSong() + ", " + rockMusic.getSong();
+
+        Random random = new Random();
+
+        return "Playing " + musicList.get(random.nextInt(musicList.size())).getSong();
     }
 }

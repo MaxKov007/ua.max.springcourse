@@ -1,11 +1,10 @@
 package ua.max.springcourse;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RockMusic implements Music {
+public class JazzMusic implements Music{
     @Override
     public String getSong() {
-        return "Rock song";
+        return "Jazz song";
     }
 }
