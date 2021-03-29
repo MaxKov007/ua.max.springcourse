@@ -1,12 +1,9 @@
 package ua.max.springcourse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
-@Component
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     private String name;
@@ -25,21 +22,12 @@ public class MusicPlayer {
     private ClassicalMusic classicalMusic;
     private RockMusic rockMusic;
 
-    @Autowired
     public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
         this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
     }
 
-    public void playMusic(MusicGenre musicGenre) {
-        Random random = new Random();
-
-        int randomNumber = random.nextInt(3);
-
-        if (musicGenre == MusicGenre.CLASSICAL) {
-            System.out.println("Playing: " + classicalMusic.getSong().get(randomNumber));
-        } else {
-            System.out.println("Playing: " + rockMusic.getSong().get(randomNumber));
-        }
+    public String playMusic() {
+        return "Playing " + classicalMusic.getSong() + ", " + rockMusic.getSong();
     }
 }

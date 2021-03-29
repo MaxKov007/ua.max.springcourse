@@ -1,13 +1,10 @@
 package ua.max.springcourse;
 
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class ClassicalMusic implements Music {
 
     @PostConstruct

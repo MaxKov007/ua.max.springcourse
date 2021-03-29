@@ -9,14 +9,9 @@ public class TestSpring {
                 SpringConfig.class
         );
 
-        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        Computer computer = context.getBean("computer", Computer.class);
 
-        System.out.println(musicPlayer.getName());
-        System.out.println(musicPlayer.getVolume());
-
-        musicPlayer.playMusic(MusicGenre.CLASSICAL);
-
-        musicPlayer.playMusic(MusicGenre.ROCK);
+        System.out.println(computer.toString());
 
         context.close();
     }
